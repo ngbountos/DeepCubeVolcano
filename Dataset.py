@@ -20,8 +20,6 @@ class Dataset(torch.utils.data.Dataset):
         self.interferograms = []
         self.interferograms_normal = []
         self.interferograms_deformation = []
-        self.ones_days = []
-        self.zero_days = []
         self.sim = sim
         self.original = original
         for data_class in self.classes:
