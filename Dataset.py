@@ -64,11 +64,6 @@ class Dataset(torch.utils.data.Dataset):
         zero[:, :, 2] = gray
         image = zero
         image = image[:224, :224, :]
-        if self.set == 'none':
-            angle = random.randint(0, 360)
-
-            M = cv.getRotationMatrix2D((113, 113), angle, 1)
-            image = cv.warpAffine(image, M, (image.shape[1], image.shape[0]))
 
         if self.set == 'train':
             transform = A.Compose([
