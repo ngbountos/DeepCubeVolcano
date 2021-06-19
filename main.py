@@ -135,8 +135,8 @@ def test_model(set='C1'):
 
 if __name__ == '__main__':
 
-    data_dir = 'S1/Train'
-    test_dir = 'S1/Test'
+    data_dir = '/home/nbountos/jh-shared/nbountos-ssh/DeepCubeVolcano/S1/Train'
+    test_dir = '/home/nbountos/jh-shared/nbountos-ssh/DeepCubeVolcano/S1/Test'
 
     #For SimcLR Training sim = True. For finetuning sim = False
 
@@ -147,7 +147,7 @@ if __name__ == '__main__':
     testloader = torch.utils.data.DataLoader(val_dataset, batch_size=112, shuffle=True, num_workers=1, drop_last = False)
 
     #Begin SimCLR Training
-    simclr = SimCLR(train_loader,epochs=1)
+    simclr = SimCLR(train_loader,epochs=200,batch_size=112)
     simclr.train()
 
     torch.save(simclr.model.state_dict(), 'ModelSimclr.pt')
