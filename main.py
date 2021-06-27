@@ -135,8 +135,8 @@ def test_model(set='C1'):
 
 if __name__ == '__main__':
 
-    data_dir = '/home/nbountos/jh-shared/nbountos-ssh/DeepCubeVolcano/S1/Train'
-    test_dir = '/home/nbountos/jh-shared/nbountos-ssh/DeepCubeVolcano/S1/Test'
+    data_dir = 'S1/Train'
+    test_dir = 'S1/Test'
 
     #For SimcLR Training sim = True. For finetuning sim = False
 
