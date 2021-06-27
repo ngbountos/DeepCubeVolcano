@@ -135,8 +135,8 @@ def test_model(set='C1'):
 
 if __name__ == '__main__':
 
-    data_dir = 'S1/Train'
-    test_dir = 'S1/Test'
+    data_dir = '/home/nbountos/jh-shared/nbountos-ssh/DeepCubeVolcano/S1/Train'
+    test_dir = '/home/nbountos/jh-shared/nbountos-ssh/DeepCubeVolcano/S1/Test'
 
     #For SimcLR Training sim = True. For finetuning sim = False
 
@@ -155,6 +155,8 @@ if __name__ == '__main__':
     #For SimcLR Training sim = True. For finetuning sim = False
     train_dataset = Dataset(data_dir,setting='train',sim=False)
     val_dataset =  Dataset(test_dir,setting='test',original=False)
+
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=112, shuffle=True, num_workers=1, drop_last = False)
     torch.manual_seed(999)
     print('Training Classifier')
     finetune(train_loader,model_path='ModelSimclr.pt')
