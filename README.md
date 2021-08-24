@@ -15,3 +15,16 @@ If you use this repo please consider citing our paper
   pages={1-5},
   doi={10.1109/LGRS.2021.3104506}}
   ```
+  
+  
+  
+  ### Loading Pre-Trained encoder example: ###
+  
+  ```
+  backbone = torchvision.models.resnet50(pretrained=False)
+  backbone.fc = nn.Sequential(nn.Linear(2048, 2048), nn.ReLU(), backbone.fc)
+  backbone = torch.nn.parallel.DataParallel(backbone,device_ids=[0,1])
+  backbone.load_state_dict(torch.load('ResNet50_Simclr_500_Epochs.pt'))
+  backbone.module.fc = nn.Identity()
+  backbone = backbone.module
+  ```
