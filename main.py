@@ -59,7 +59,7 @@ def finetune(train_loader,testloader=None,model_path='ModelSimclr.pt'):
 # Evaluate
 def test_model(set='C1'):
 
-    test = Dataset(set, setting='train', sim=False, original=True)
+    test = Dataset(set, setting='test', sim=False, original=True)
     testloader = torch.utils.data.DataLoader(test, batch_size=1, shuffle=False, num_workers=1, drop_last=False)
     simclr = SimCLR(testloader)
     model = simclr.model
